@@ -222,19 +222,6 @@ body {
 
 <script>
 (function(){
-  // Logo 載入邏輯：如果依然想使用傳統 HTML 控制，可視需求自行清理或保留此段
-  var img = document.getElementById('applogo');
-  if(img) {
-    fetch('/mnt/user-data/uploads/%E5%9C%93%E5%BD%A2logo.jpg')
-      .then(function(r){ return r.blob(); })
-      .then(function(blob){
-        img.src = URL.createObjectURL(blob);
-      })
-      .catch(function(){
-        // 萬一載入失敗的預備方案
-      });
-  }
-
   // 輪播圖邏輯
   var cur=0, slides=document.querySelectorAll('.video-slide'), dotsEl=document.getElementById('dots'), n=slides.length, timer;
   slides.forEach(function(_,i){
