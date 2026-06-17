@@ -1,67 +1,94 @@
-
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>輔仁聖博敏神學院</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-.phone-wrap { display: flex; justify-content: center; padding: 1.2rem 0; }
-.phone {
-  width: 320px; background: #f0f4f8;
-  border-radius: 40px; border: 2.5px solid #bcc8d8;
-  overflow: hidden; box-shadow: 0 6px 32px rgba(0,0,0,0.15);
+
+/* 移除原本的居中與外距，讓網頁底色直接變成最外層背景 */
+body {
+  background: #f0f4f8;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  display: flex;
+  justify-content: center;
 }
-.status-bar { background: #1560AC; padding: 10px 20px 6px; display: flex; justify-content: space-between; font-size: 11px; color: #fff; }
-.header { background: #1560AC; padding: 14px 16px 22px; text-align: center; }
-.header-logo { width: 68px; height: 68px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; border: 2.5px solid rgba(255,255,255,0.45); overflow: hidden; }
-.header-logo img { width: 68px; height: 68px; object-fit: cover; display: block; }
-.header-name { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.3; }
-.header-sub { font-size: 10px; color: rgba(255,255,255,0.72); margin-top: 3px; }
-.body { background: #f0f4f8; padding: 14px 12px; }
-.section-label { font-size: 11px; font-weight: 700; color: #1560AC; margin-bottom: 7px; padding-left: 2px; }
-.intro-card { background: #fff; border-radius: 13px; padding: 12px 13px; margin-bottom: 12px; border: 0.5px solid #dce6f0; }
-.intro-title { font-size: 12px; font-weight: 700; color: #1560AC; margin-bottom: 4px; }
-.intro-text { font-size: 11px; color: #555; line-height: 1.65; }
-.main-video-wrap { margin-bottom: 13px; }
+
+/* 將原本固定 320px 的手機外殼改成 100% 滿版 */
+/* 同時設定 max-width，這樣如果在電腦上看，寬度會停在舒服的 450px，不會無限拉寬 */
+.phone {
+  width: 100%;
+  max-width: 450px;
+  background: #f0f4f8;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 移除模擬的 status-bar (手機狀態列)，真實手機本來就有狀態列 */
+.status-bar { display: none; }
+
+.header { background: #1560AC; padding: 24px 16px 24px; text-align: center; }
+.header-logo { width: 72px; height: 72px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; border: 2.5px solid rgba(255,255,255,0.45); overflow: hidden; }
+.header-logo img { width: 72px; height: 72px; object-fit: cover; display: block; }
+.header-name { font-size: 16px; font-weight: 700; color: #fff; line-height: 1.3; }
+.header-sub { font-size: 11px; color: rgba(255,255,255,0.72); margin-top: 4px; }
+
+.body { background: #f0f4f8; padding: 16px 14px; flex: 1; }
+.section-label { font-size: 12px; font-weight: 700; color: #1560AC; margin-bottom: 8px; padding-left: 2px; }
+.intro-card { background: #fff; border-radius: 13px; padding: 14px; margin-bottom: 14px; border: 0.5px solid #dce6f0; }
+.intro-title { font-size: 13px; font-weight: 700; color: #1560AC; margin-bottom: 6px; }
+.intro-text { font-size: 12px; color: #555; line-height: 1.65; }
+
+.main-video-wrap { margin-bottom: 14px; }
 .main-video-card { background: #fff; border-radius: 13px; overflow: hidden; border: 0.5px solid #dce6f0; }
 .main-thumb { width: 100%; aspect-ratio: 16/9; background: #000; position: relative; cursor: pointer; display: block; text-decoration: none; }
 .main-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9; }
 .play-lg { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 52px; height: 52px; background: rgba(220,0,0,0.92); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-.main-info { padding: 10px 13px 12px; }
-.badge { display: inline-block; background: #1560AC; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; }
-.main-title { font-size: 13px; font-weight: 700; color: #1a1a1a; line-height: 1.4; margin-bottom: 3px; }
-.main-meta { font-size: 10px; color: #888; }
-.watch-btn { display: block; text-align: center; margin-top: 9px; background: #1560AC; color: #fff; font-size: 12px; font-weight: 700; padding: 7px; border-radius: 8px; text-decoration: none; }
+.main-info { padding: 12px 14px 14px; }
+.badge { display: inline-block; background: #1560AC; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; }
+.main-title { font-size: 14px; font-weight: 700; color: #1a1a1a; line-height: 1.4; margin-bottom: 4px; }
+.main-meta { font-size: 11px; color: #888; }
+.watch-btn { display: block; text-align: center; margin-top: 10px; background: #1560AC; color: #fff; font-size: 13px; font-weight: 700; padding: 8px; border-radius: 8px; text-decoration: none; }
 .watch-btn:hover { background: #0d4a85; }
-.carousel-wrap { background: #fff; border-radius: 13px; overflow: hidden; border: 0.5px solid #dce6f0; margin-bottom: 13px; }
+
+.carousel-wrap { background: #fff; border-radius: 13px; overflow: hidden; border: 0.5px solid #dce6f0; margin-bottom: 14px; }
 .video-slide { display: none; }
 .video-slide.active { display: block; }
 .v-thumb { width: 100%; aspect-ratio: 16/9; background: #111; position: relative; cursor: pointer; }
 .v-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.88; }
 .play-sm { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 40px; height: 40px; background: rgba(220,0,0,0.88); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-.v-info { padding: 9px 12px 10px; }
-.v-title { font-size: 12px; font-weight: 700; color: #222; line-height: 1.4; margin-bottom: 2px; }
-.v-meta { font-size: 10px; color: #888; }
-.ctrl { display: flex; align-items: center; justify-content: space-between; padding: 7px 12px; border-top: 0.5px solid #dce6f0; }
-.c-btn { background: none; border: 0.5px solid #dce6f0; border-radius: 8px; padding: 4px 10px; font-size: 15px; cursor: pointer; color: #1560AC; }
+.v-info { padding: 10px 14px 12px; }
+.v-title { font-size: 13px; font-weight: 700; color: #222; line-height: 1.4; margin-bottom: 3px; }
+.v-meta { font-size: 11px; color: #888; }
+.ctrl { display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; border-top: 0.5px solid #dce6f0; }
+.c-btn { background: none; border: 0.5px solid #dce6f0; border-radius: 8px; padding: 4px 12px; font-size: 16px; cursor: pointer; color: #1560AC; }
 .c-btn:hover { background: #eef4fb; }
-.dots { display: flex; gap: 5px; }
-.dot { width: 6px; height: 6px; border-radius: 50%; background: #ccd8e8; cursor: pointer; transition: background .2s; }
+.dots { display: flex; gap: 6px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #ccd8e8; cursor: pointer; transition: background .2s; }
 .dot.on { background: #1560AC; }
-.link-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
-.link-item { display: flex; align-items: center; gap: 12px; background: #fff; border-radius: 12px; padding: 10px 13px; border: 0.5px solid #dce6f0; text-decoration: none; }
-.link-item:hover { background: #eef4fb; }
-.icon-c { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.i-fb { background: #1877F2; } .i-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); } .i-yt { background: #FF0000; } .i-web { background: #1560AC; }
-.li { flex: 1; } .ln { font-size: 13px; font-weight: 700; color: #1a1a1a; } .lh { font-size: 11px; color: #888; margin-top: 1px; } .arr { font-size: 18px; color: #b0c4d8; }
-.banner { background: linear-gradient(135deg,#1560AC,#1e82d8); border-radius: 13px; padding: 13px 14px; text-align: center; margin-bottom: 4px; }
-.bm { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-.bt { font-size: 11px; color: rgba(255,255,255,0.82); line-height: 1.55; }
-.home-bar { background: #f0f4f8; padding: 10px; text-align: center; }
-.hi { width: 80px; height: 4px; background: #333; border-radius: 2px; margin: 0 auto; opacity: 0.12; }
-</style>
 
-<div class="phone-wrap"><div class="phone">
-  <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+.link-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.link-item { display: flex; align-items: center; gap: 12px; background: #fff; border-radius: 12px; padding: 12px 14px; border: 0.5px solid #dce6f0; text-decoration: none; }
+.link-item:hover { background: #eef4fb; }
+.icon-c { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.i-fb { background: #1877F2; } .i-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); } .i-yt { background: #FF0000; } .i-web { background: #1560AC; }
+.li { flex: 1; } .ln { font-size: 14px; font-weight: 700; color: #1a1a1a; } .lh { font-size: 11px; color: #888; margin-top: 2px; } .arr { font-size: 18px; color: #b0c4d8; }
+
+.banner { background: linear-gradient(135deg,#1560AC,#1e82d8); border-radius: 13px; padding: 14px; text-align: center; margin-bottom: 10px; }
+.bm { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.bt { font-size: 12px; color: rgba(255,255,255,0.82); line-height: 1.55; }
+
+/* 移除底部模擬的黑線條 (iPhone Home Bar) */
+.home-bar { display: none; }
+</style>
+</head>
+<body>
+
+<div class="phone">
   <div class="header">
-    <div class="header-logo"><img id="圓形logo.jpg" alt="輔神logo"></div>
+    <div class="header-logo"><img id="logoImg" alt="輔神logo"></div>
     <div class="header-name">輔仁聖博敏神學院</div>
     <div class="header-sub">Fu Jen Faculty of Theology of St. Robert Bellarmine</div>
   </div>
@@ -92,7 +119,7 @@
       <div id="carousel">
         <div class="video-slide active">
           <div class="v-thumb" onclick="openV('fSLkddX74jU&list=PL2PCXckuRe29Q0VEMacyZm5DTp9lXGfVF&index=1')">
-            <img src="談良辰jpg" alt="v1">
+            <img src="談良辰.jpg" alt="v1">
             <div class="play-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
           </div>
           <div class="v-info"><div class="v-title">四部福音的天主面容詮釋 談良辰老師</div><div class="v-meta">輔神2026秋季夜間教友課程</div></div>
@@ -146,22 +173,22 @@
       <div class="bt">2026 秋季夜間神學課程 報名中<br>歡迎教友報名，豐富信仰生活</div>
     </div>
   </div>
-  <div class="home-bar"><div class="hi"></div></div>
-</div></div>
+</div>
 
 <script>
 (function(){
-  // Load logo via fetch to avoid cross-origin issues
+  // 修正 JavaScript 中抓取 logo 的 ID 錯誤 (原本程式寫 logoImg 但 HTML 寫 圓形logo.jpg)
   var img = document.getElementById('logoImg');
-  fetch('/mnt/user-data/uploads/%E5%9C%93%E5%BD%A2logo.jpg')
-    .then(function(r){ return r.blob(); })
-    .then(function(blob){
-      img.src = URL.createObjectURL(blob);
-    })
-    .catch(function(){
-      // fallback: use a cross symbol
-      img.parentNode.innerHTML = '<span style="font-size:28px;color:#1560AC">✝</span>';
-    });
+  if(img) {
+    fetch('/mnt/user-data/uploads/%E5%9C%93%E5%BD%A2logo.jpg')
+      .then(function(r){ return r.blob(); })
+      .then(function(blob){
+        img.src = URL.createObjectURL(blob);
+      })
+      .catch(function(){
+        img.parentNode.innerHTML = '<span style="font-size:28px;color:#1560AC">✝</span>';
+      });
+  }
 
   var cur=0, slides=document.querySelectorAll('.video-slide'), dotsEl=document.getElementById('dots'), n=slides.length, timer;
   slides.forEach(function(_,i){
@@ -171,6 +198,7 @@
     dotsEl.appendChild(d);
   });
   function goTo(idx){
+    if(n===0) return;
     slides[cur].classList.remove('active');
     dotsEl.children[cur].classList.remove('on');
     cur=(idx+n)%n;
@@ -184,3 +212,5 @@
   resetTimer();
 })();
 </script>
+</body>
+</html>
